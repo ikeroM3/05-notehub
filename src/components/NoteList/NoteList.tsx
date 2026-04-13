@@ -1,6 +1,5 @@
 import css from "./NoteList.module.css";
 import { deleteNote } from "../../services/noteService";
-import { type FetchNotesResponse } from "../../services/noteService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { Note } from "../../types/note";
 
