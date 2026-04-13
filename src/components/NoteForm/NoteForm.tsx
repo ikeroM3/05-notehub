@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNote } from "../../services/noteService";
-
+import type { NoteTag } from "../../types/note";
 interface NoteFormProps {
   onClose: () => void;
 }
@@ -39,7 +39,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
       initialValues={{
         title: "",
         content: "",
-        tag: "Todo",
+        tag: "Todo" as NoteTag,
       }}
       validationSchema={NoteSchema}
       onSubmit={async (values, actions) => {
