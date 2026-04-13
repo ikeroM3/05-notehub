@@ -6,10 +6,13 @@ import NoteList from "../NoteList/NoteList";
 import css from "./App.module.css";
 import Modal from "../Modal/Modal";
 import TaskForm from "../NoteForm/NoteForm";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Pagination from "../Pagination/Pagination";
 import SearchBox from "../SearchBox/SearchBox";
-
+import {
+  useQuery,
+  useQueryClient,
+  keepPreviousData,
+} from "@tanstack/react-query";
 function App() {
   const queryClient = useQueryClient();
   const [page, setPage] = useState(1);
@@ -24,8 +27,9 @@ function App() {
       fetchNotes({
         page,
         searchText: search,
-        perPage: 10,
+        perPage: 12,
       }),
+    placeholderData: keepPreviousData,
   });
   const handleSearch = useDebouncedCallback((value: string) => {
     setSearch(value);
@@ -58,7 +62,7 @@ function App() {
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <TaskForm
-            onAddTask={() => {
+            onClose={() => {
               closeModal();
               queryClient.invalidateQueries({
                 queryKey: ["notes"],

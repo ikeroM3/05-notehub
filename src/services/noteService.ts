@@ -24,6 +24,7 @@ export const fetchNotes = async ({
       search: searchText,
       tag: tag,
       page: page,
+      perPage: 12,
     },
     headers: {
       Authorization: `Bearer ${token}`,
@@ -44,7 +45,7 @@ export const createNote = async (data: Update): Promise<Note> => {
   return response.data;
 };
 export const deleteNote = async (id: string) => {
-  const response = await axios.delete(`/notes/${id}`, {
+  const response = await axios.delete<Note>(`/notes/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
       Accept: "application/json",
