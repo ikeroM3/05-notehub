@@ -10,7 +10,7 @@ export interface Note {
 }
 
 export interface NoteUpdate {
-  title?: string;
-  content?: string;
-  tag?: NoteTag;
+  title: string;
+  content: string;
+  tag: NoteTag;
 }
