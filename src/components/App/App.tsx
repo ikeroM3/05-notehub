@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { fetchNotes } from "../../services/noteService";
-import { createNote } from "../../services/noteService";
+
 import { useDebouncedCallback } from "use-debounce";
 import NoteList from "../NoteList/NoteList";
 import css from "./App.module.css";
@@ -9,6 +9,7 @@ import TaskForm from "../NoteForm/NoteForm";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Pagination from "../Pagination/Pagination";
 import SearchBox from "../SearchBox/SearchBox";
+
 function App() {
   const queryClient = useQueryClient();
   const [page, setPage] = useState(1);
